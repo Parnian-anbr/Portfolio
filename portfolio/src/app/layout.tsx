@@ -1,7 +1,19 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] })
+
+import { Bebas_Neue, Foldit, Roboto, Ubuntu } from 'next/font/google';
+ 
+const ubuntuFont = Ubuntu({
+  weight: '300',
+  subsets: ['latin'],
+});
+const foldit = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+});
+
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body >{children}</body>
     </html>
   )
 }
