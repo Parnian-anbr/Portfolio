@@ -5,23 +5,29 @@ export const MessageForm = () => {
   const [email, setEmail] = React.useState<string>();
   const [message, setMessage] = React.useState<string>();
 
-  const handleSubmit = () => {
-    // fetch("/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   // body: encode({ "form-name": "contact", ...this.state })
-    // })
-    //   .then(() => alert("Success!"))
-    //   .catch(error => alert(error));
-    // e.preventDefault();
-  };
+  // const handleSubmit = (event: any) => {
+  //   event.preventDefault();
+
+  //   const myForm = event.target;
+  //   const formData = new FormData(myForm);
+
+  //   fetch('/', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  //     body: new URLSearchParams(formData as any).toString(),
+  //   })
+  //     .then(() => alert('post completed.'))
+  //     .catch((error) => alert(error));
+  // };
+
 
   return (
     <form
-      name="contat"
-      method="POST"
+      name="contact"
       data-netlify="true"
-      onSubmit={handleSubmit}
+      // netlify={true}
+      netlify-honeypot="bot-field" 
+      // onSubmit={handleSubmit}
     >
       <p>
         <label>
@@ -56,6 +62,7 @@ export const MessageForm = () => {
         </label>
       </p>
       <p>
+       <input type="hidden" name="form-name" value="contact" />
         <button type="submit">Send</button>
       </p>
     </form>
