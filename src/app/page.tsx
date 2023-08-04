@@ -2,8 +2,8 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import React, { useState } from "react";
 import MainContainer from "./components/MainContainer";
-import About from "./components/about";
-import MenuItems from "./components/menuItems";
+import About from "./components/About";
+import MenuItems from "./components/MenuItems";
 import { MenuItemsList } from "./types";
 
 export default function Home() {
