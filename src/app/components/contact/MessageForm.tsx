@@ -1,33 +1,37 @@
 import React from 'react';
 
+const encode = (data: any) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+};
+
 export const MessageForm = () => {
   const [name, setName] = React.useState<string>();
   const [email, setEmail] = React.useState<string>();
   const [message, setMessage] = React.useState<string>();
 
-  // const handleSubmit = (event: any) => {
-  //   event.preventDefault();
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    console.log({ name, email, message });
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', name, email, message }),
+    })
+      .then(() => alert('Success!'))
+      .catch((error) => alert(error));
 
-  //   const myForm = event.target;
-  //   const formData = new FormData(myForm);
-
-  //   fetch('/', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  //     body: new URLSearchParams(formData as any).toString(),
-  //   })
-  //     .then(() => alert('post completed.'))
-  //     .catch((error) => alert(error));
-  // };
-
+    event.preventDefault();
+  };
 
   return (
     <form
       name="contact"
       data-netlify="true"
       // netlify={true}
-      netlify-honeypot="bot-field" 
-      // onSubmit={handleSubmit}
+      netlify-honeypot="bot-field"
+      onSubmit={handleSubmit}
     >
       <p>
         <label>
@@ -57,12 +61,12 @@ export const MessageForm = () => {
           <textarea
             name="message"
             value={message}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
           />
         </label>
       </p>
       <p>
-       <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-name" value="contact" />
         <button type="submit">Send</button>
       </p>
     </form>
