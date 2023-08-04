@@ -2,7 +2,7 @@
 import { Ubuntu } from "next/font/google";
 import { useState } from "react";
 import About from "./about";
-import Contact from "./contact/contactMain";
+import Contact from "./contact/ContactMain";
 import HomePage from "./homePage";
 import Projects from "./projects";
 

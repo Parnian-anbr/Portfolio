@@ -1,4 +1,5 @@
 import MailIcon from "../../../public/icons/mail.svg";
+import { MessageForm } from "./MessageForm";
 interface ContactProps {
   //   onClick: () => void;
 }
@@ -27,6 +28,7 @@ export default function Contact({}: ContactProps) {
             <img className="h-5 w-5 mr-1 mt-1" src="/message.svg" alt="text" />
             Right Here
           </p>
+          <MessageForm />
         </section>
       </div>
     </>
