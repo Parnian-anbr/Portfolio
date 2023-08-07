@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const encode = (data: any) => {
   return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
 };
 
 export const MessageForm = () => {
@@ -14,12 +14,12 @@ export const MessageForm = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
     console.log({ name, email, message });
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', name, email, message }),
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", name, email, message }),
     })
-      .then(() => alert('Success!'))
+      .then(() => alert("Success!"))
       .catch((error) => alert(error));
 
     event.preventDefault();
@@ -27,15 +27,16 @@ export const MessageForm = () => {
 
   return (
     <form
+      className="text-black"
       name="contact"
       data-netlify="true"
       // netlify={true}
-      netlify-honeypot="bot-field"
+      // netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
       <p>
         <label>
-          Your Name:{' '}
+          Your Name:{" "}
           <input
             type="text"
             name="name"
@@ -46,7 +47,7 @@ export const MessageForm = () => {
       </p>
       <p>
         <label>
-          Your Email:{' '}
+          Your Email:{" "}
           <input
             type="email"
             name="email"
@@ -57,7 +58,7 @@ export const MessageForm = () => {
       </p>
       <p>
         <label>
-          Message:{' '}
+          Message:{" "}
           <textarea
             name="message"
             value={message}
