@@ -2,9 +2,9 @@
 import { Ubuntu } from "next/font/google";
 import { useState } from "react";
 import About from "./About";
-import Contact from "./contact/ContactMain";
 import HomePage from "./HomePage";
 import Projects from "./Projects";
+import Contact from "./contact/ContactMain";
 
 const ubuntuFont = Ubuntu({
   weight: "300",
@@ -19,39 +19,44 @@ export default function Content() {
 
   return (
     <>
-      <div className="content">
-        <div className="flex flex-row flex-1">
+      <div className="content flex flex-col md:flex-row">
+        <div className="flex md:flex-row flex-col flex-1">
           <div
-            className={"menu-container"}
+            className={"menu-container h-10v md:h-100v md:w-24"}
             onClick={() => {
               setShowAbout(!showAbout);
+              setShowProjects(!!showProjects ? false : showProjects);
+              setShowContact(!!showContact ? false : showContact);
               console.log(showAbout, showContact);
             }}
           >
-            <span className="menu-Items -rotate-90">About</span>
+            <span className="menu-Items md:-rotate-90 ">About</span>
           </div>{" "}
           {showAbout && <About />}
           <div
-            className={"menu-container"}
+            className={"menu-container h-10v md:h-100v md:w-24"}
             onClick={() => {
               setShowContact(!showContact);
-              console.log(showAbout, showContact);
+              setShowProjects(!!showProjects ? false : showProjects);
+              setShowAbout(!!showAbout ? false : showAbout);
             }}
           >
-            <span className="menu-Items -rotate-90">Contact</span>
+            <span className="menu-Items md:-rotate-90 ">Contact</span>
           </div>{" "}
           {showContact && <Contact />}
           <div
-            className={"menu-container"}
+            className={"menu-container h-10v md:h-100v md:w-24"}
             onClick={() => {
               setShowProjects(!showProjects);
+              setShowAbout(!!showAbout ? false : showAbout);
+              setShowContact(!!showContact ? false : showContact);
             }}
           >
-            <span className="menu-Items -rotate-90">Projects</span>
+            <span className="menu-Items md:-rotate-90">Projects</span>
           </div>{" "}
           {showProjects && <Projects />}
         </div>
-        {!(showAbout || showContact || showProjects) && <HomePage/>}
+        {!(showAbout || showContact || showProjects) && <HomePage />}
       </div>
     </>
   );

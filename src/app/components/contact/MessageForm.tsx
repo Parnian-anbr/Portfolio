@@ -12,7 +12,6 @@ export const MessageForm = () => {
   const [message, setMessage] = React.useState<string>();
 
   const handleSubmit = (event: any) => {
-    event.preventDefault();
     console.log({ name, email, message });
     fetch("/", {
       method: "POST",
@@ -27,7 +26,7 @@ export const MessageForm = () => {
 
   return (
     <form
-      className="text-black"
+      className="form"
       name="contact"
       data-netlify="true"
       // netlify={true}
@@ -42,6 +41,7 @@ export const MessageForm = () => {
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="inputs"
           />
         </label>
       </p>
@@ -53,6 +53,7 @@ export const MessageForm = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="inputs"
           />
         </label>
       </p>
@@ -63,11 +64,12 @@ export const MessageForm = () => {
             name="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            className="inputs"
           />
         </label>
       </p>
-      <p>
         <input type="hidden" name="form-name" value="contact" />
+      <p>
         <button type="submit">Send</button>
       </p>
     </form>
