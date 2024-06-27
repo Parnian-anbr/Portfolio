@@ -6,13 +6,12 @@ const encode = (data: any) => {
     .join("&");
 };
 
-export const MessageForm = () => {
+const MessageForm = () => {
   const [name, setName] = React.useState<string>();
   const [email, setEmail] = React.useState<string>();
   const [message, setMessage] = React.useState<string>();
 
   const handleSubmit = (event: any) => {
-    console.log({ name, email, message });
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -29,8 +28,6 @@ export const MessageForm = () => {
       className="form"
       name="contact"
       data-netlify="true"
-      // netlify={true}
-      // netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
     >
       <p>
@@ -68,10 +65,12 @@ export const MessageForm = () => {
           />
         </label>
       </p>
-        <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="contact" />
       <p>
         <button type="submit">Send</button>
       </p>
     </form>
   );
 };
+
+export default MessageForm;

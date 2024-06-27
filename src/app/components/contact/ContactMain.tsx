@@ -1,11 +1,11 @@
 import React from "react";
 import MailIcon from "../../../public/icons/mail.svg";
-import { MessageForm } from "./MessageForm";
+import MessageForm from "./MessageForm";
 interface ContactProps {
   //   onClick: () => void;
 }
 
-export default function Contact({}: ContactProps) {
+export default function Contact({ }: ContactProps) {
   const [showForm, setShowForm] = React.useState<boolean>(false);
   return (
     <>

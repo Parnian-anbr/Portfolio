@@ -1,0 +1,24 @@
+<form className="form" name="contact" data-netlify="true" onSubmit={handleSubmit}>
+  <p>
+    <label>
+      Your Name:{" "}
+      <input type="text" name="name" value={name} className="inputs" />
+    </label>
+  </p>
+  <p>
+    <label>
+      Your Email:{" "}
+      <input type="email" name="email" value={email} className="inputs" />
+    </label>
+  </p>
+  <p>
+    <label>
+      Message:{" "}
+      <textarea name="message" value={message} className="inputs" />
+    </label>
+  </p>
+  <input type="hidden" name="form-name" value="contact" />
+  <p>
+    <button type="submit">Send</button>
+  </p>
+</form>
